@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tictactoe.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center;font-size:200%;">@Tic-Tac-Toe</h1>
+    <div id="box1">
+      <div id="0" class="box" onclick="showoandx(this)"></div>
+      <div id="1" class="box" onclick="showoandx(this)"></div>
+      <div id="2" class="box" onclick="showoandx(this)"></div>
+      <div id="3" class="box" onclick="showoandx(this)"></div>
+      <div id="4" class="box" onclick="showoandx(this)"></div>
+      <div id="5" class="box" onclick="showoandx(this)"></div>
+      <div id="6" class="box" onclick="showoandx(this)"></div>
+      <div id="7" class="box" onclick="showoandx(this)"></div>
+      <div id="8" class="box" onclick="showoandx(this)"></div>
+    </div>
+    <div id="box2">
+      <span
+        >Tern: <span id="xOro">x</span>
+        <a id="restart" href="/tictactoe.html">Restart</a>
+        <div id="playagain"></div>
+      </span>
+    </div>
+    <script>
+      'use strict';
+      var option = [];
+      var player1 = 'x';
+      var player2 = '0';
+      var tern1 = true;
+      var tern2 = false;
+      var isGameOver = false;
+      var player = document.getElementById('xOro');
+      function showoandx(Ele) {
+        console.log(Ele);
+        if (Ele.innerHTML !== '') {
+          return;
+        }
+
+        if (!isGameOver) {
+          if (tern1) {
+            Ele.innerHTML = player1;
+            option[parseInt(Ele.id)] = player1;
+            player.innerHTML = player2;
+            iswinner();
+            tern1 = false;
+            tern2 = true;
+            return;
+          }
+          if (tern2) {
+            Ele.innerHTML = player2;
+            option[parseInt(Ele.id)] = player2;
+            player.innerHTML = player1;
+            iswinner();
+            tern1 = true;
+            tern2 = false;
+            return;
+          }
+        }
+      }
+      function iswinner() {
+        var status = document.getElementById('playagain');
+        var status2 = document.getElementById('restart');
+        if (winner() == player1) {
+          isGameOver = true;
+          status.innerHTML =
+            player1 +
+            " is the winner!<a href='./tictactoe.html'>Play Again</a>";
+        } else if (winner() == player2) {
+          isGameOver = true;
+          status.innerHTML =
+            player2 +
+            " is the winner!<a href = '/tictactoe.html'>play again</a>";
+        }
+        // status2.innerHTML = '';
+      }
+      function winner() {
+        if (
+          isplayer1(0, 1, 2) ||
+          isplayer1(3, 4, 5) ||
+          isplayer1(6, 7, 8) ||
+          isplayer1(0, 3, 6) ||
+          isplayer1(1, 4, 7) ||
+          isplayer1(2, 5, 8) ||
+          isplayer1(0, 4, 8) ||
+          isplayer1(2, 4, 6)
+        ) {
+          return player1;
+        } else if (
+          isplayer2(0, 1, 2) ||
+          isplayer2(3, 4, 5) ||
+          isplayer2(6, 7, 8) ||
+          isplayer2(0, 3, 6) ||
+          isplayer2(1, 4, 7) ||
+          isplayer2(2, 5, 8) ||
+          isplayer2(0, 4, 8) ||
+          isplayer2(2, 4, 6)
+        ) {
+          return player2;
+        }
+      }
+      function isplayer1(b1, b2, b3) {
+        if (
+          option[b1] == player1 &&
+          option[b2] == player1 &&
+          option[b3] == player1
+        ) {
+          reddish(b1, b2, b3);
+          return true;
+        }
+      }
+
+      function isplayer2(b1, b2, b3) {
+        if (
+          option[b1] == player2 &&
+          option[b2] == player2 &&
+          option[b3] == player2
+        ) {
+          reddish(b1, b2, b3);
+          return true;
+        }
+      }
+      function reddish(b1, b2, b3) {
+        let color = 'red';
+        document.getElementById('' + b1).style.color = color;
+        document.getElementById('' + b2).style.color = color;
+        document.getElementById('' + b3).style.color = color;
+      }
+    </script>
+  </body>
+</html>

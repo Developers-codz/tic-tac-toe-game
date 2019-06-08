@@ -1,0 +1,52 @@
+. {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: black;
+}
+#box1 {
+  margin: 0 auto;
+  width: 320px;
+  height: 320px;
+  /* border: 1px solid black; */
+  background-color: aqua;
+  /* margin: 10px; */
+  padding: 15px;
+}
+.box {
+  width: 80px;
+  height: 80px;
+  float: left;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 300%;
+  text-align: center;
+}
+#box2 {
+  display: inline-block;
+  margin-left: 500px;
+  /* background-color: burlywood; */
+  font-size: 350%;
+  color: white;
+}
+#xOro {
+  font-size: 100%;
+  margin-left: 10px;
+  padding-left: 2px;
+}
+#xOro:hover {
+  color: green;
+  cursor: pointer;
+  background-color: white;
+}
+#restart {
+  font-size: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+#restart:hover {
+  color: red;
+  cursor: pointer;
+}
